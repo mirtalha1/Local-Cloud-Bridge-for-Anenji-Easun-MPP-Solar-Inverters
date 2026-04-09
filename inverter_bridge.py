@@ -7,13 +7,25 @@ import os
 import signal
 import sys
 
-# --- CONFIGURATION ---
-INVERTER_PORT = 18899
+# Load configuration from config.json
+CONFIG_FILE = "config.json"
+with open(CONFIG_FILE, "r") as config_file:
+    config = json.load(config_file)
+
+# Update configuration variables
+INVERTER_PORT = config.get("bridge_port", 18899)
 LOCAL_CONTROL_PORT = 9999
-BIND_IP = '0.0.0.0'
-POLL_INTERVAL = 1.0 
+BIND_IP = "0.0.0.0"
+POLL_INTERVAL = config.get("polling_interval", 1.0)
 INVERTER_RATED_WATT = 6200 
 OFFLINE_THRESHOLD = 10 
+MQTT_BROKER = config.get("mqtt_broker")
+MQTT_PORT = config.get("mqtt_port", 1883)
+MQTT_USERNAME = config.get("mqtt_username")
+MQTT_PASSWORD = config.get("mqtt_password")
+INVERTER_IP = config.get("inverter_ip")
+HA_DISCOVERY = config.get("ha_discovery", True)
+HA_PREFIX = config.get("ha_prefix", "homeassistant")
 
 # --- ENERGY MIGRATION ---
 ENERGY_FILE = "/root/inverter_energy.json"

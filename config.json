@@ -1,0 +1,12 @@
+{
+    "log_level": "INFO",
+    "mqtt_broker": "192.168.1.xxx", // IP of your Home Assistant / MQTT broker
+    "mqtt_port": 1883,
+    "mqtt_username": null, // Add your MQTT username if needed
+    "mqtt_password": null, // Add your MQTT password if needed
+    "inverter_ip": "192.168.1.yyy", // IP address of your inverter's WiFi dongle
+    "bridge_port": 18899,
+    "polling_interval": 1, // Poll every second for real-time data
+    "ha_discovery": true,
+    "ha_prefix": "homeassistant"
+}
